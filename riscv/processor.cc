@@ -480,6 +480,11 @@ void processor_t::set_csr(int which, reg_t val)
         state.tohost = val;
       break;
     case CSR_MFROMHOST: state.fromhost = val; break;
+
+    case CSR_UTVEC: state.utvec = val; break;
+    case CSR_UEPC: state.uepc = val; break;
+    case CSR_UCAUSE: state.ucause = val; break;
+    case CSR_UBADADDR: state.ubadaddr = val; break;
   }
 }
 
@@ -595,6 +600,10 @@ reg_t processor_t::get_csr(int which)
     case CSR_UARCH14:
     case CSR_UARCH15:
       return 0;
+    case CSR_UTVEC: return state.utvec;
+    case CSR_UEPC: return state.uepc;
+    case CSR_UCAUSE: return state.ucause;
+    case CSR_UBADADDR: return state.ubadaddr;
   }
   throw trap_illegal_instruction();
 }

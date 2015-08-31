@@ -69,6 +69,12 @@ struct state_t
 
   reg_t load_reservation;
 
+  // CSRs for user-level traps
+  reg_t utvec;
+  reg_t uepc;
+  reg_t ucause;
+  reg_t ubadaddr;
+
 #ifdef RISCV_ENABLE_COMMITLOG
   commit_log_reg_t log_reg_write;
 #endif
